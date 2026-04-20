@@ -1,1 +1,510 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guide — Horaire Interactif Asiasie 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream:  #ede8da;
+    --beige:  #e2dcc8;
+    --orange: #f06118;
+    --brown:  #8c6e2a;
+    --blue:   #9fb3d4;
+    --text:   #1a1208;
+    --muted:  #6b5a34;
+    --border: rgba(26,18,8,0.1);
+    --heart:  #e03060;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--orange); color: #fff;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 9px 0; white-space: nowrap; overflow: hidden;
+  }
+  .ticker-inner { display: inline-block; animation: ticker 28s linear infinite; }
+  .ticker-inner span { margin: 0 32px; }
+  @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+  /* ── HEADER ── */
+  header {
+    padding: 28px 48px 24px;
+    border-bottom: 1.5px solid var(--text);
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+    flex-wrap: wrap;
+  }
+  .header-logo { font-family: 'DM Serif Display', serif; font-size: 42px; color: var(--text); line-height: 1; }
+  .header-logo span { color: var(--orange); }
+  .header-meta { text-align: right; }
+  .header-meta .label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .header-meta .title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--text); margin-top: 2px; }
+  .header-meta .subtitle { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 1100px; margin: 0 auto; padding: 56px 48px 80px; }
+
+  .intro {
+    margin-bottom: 64px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .intro-eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 14px;
+  }
+  .intro-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.1; color: var(--text);
+    max-width: 680px; margin-bottom: 20px;
+  }
+  .intro-heading em { color: var(--orange); font-style: italic; }
+  .intro-body { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.75; }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 64px; }
+  .section-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 28px; padding-bottom: 16px;
+    border-bottom: 1.5px solid var(--text);
+  }
+  .section-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px; color: var(--orange); line-height: 1;
+    min-width: 48px;
+  }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--text); }
+
+  /* ── FEATURES GRID ── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  .feat-card {
+    background: var(--cream);
+    border: 1.5px solid var(--text);
+    border-radius: 12px;
+    padding: 20px 22px;
+    transition: background 0.12s;
+    animation: fadeUp 0.5s both;
+  }
+  .feat-card:hover { background: var(--beige); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .feat-card:nth-child(1)  { animation-delay: 0.05s; }
+  .feat-card:nth-child(2)  { animation-delay: 0.10s; }
+  .feat-card:nth-child(3)  { animation-delay: 0.15s; }
+  .feat-card:nth-child(4)  { animation-delay: 0.20s; }
+  .feat-card:nth-child(5)  { animation-delay: 0.25s; }
+  .feat-card:nth-child(6)  { animation-delay: 0.30s; }
+  .feat-card:nth-child(7)  { animation-delay: 0.35s; }
+  .feat-card:nth-child(8)  { animation-delay: 0.40s; }
+  .feat-card:nth-child(9)  { animation-delay: 0.45s; }
+  .feat-card:nth-child(10) { animation-delay: 0.50s; }
+
+  .feat-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+  .feat-icon {
+    font-size: 22px; width: 44px; height: 44px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(240,97,24,0.1); flex-shrink: 0;
+  }
+  .feat-tag {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 10px; border: 1px solid;
+    white-space: nowrap; align-self: flex-start;
+  }
+  .tag-free { background: rgba(29,120,60,0.1); color: #1d6632; border-color: rgba(29,120,60,0.3); }
+  .tag-pwa  { background: rgba(240,97,24,0.1); color: var(--orange); border-color: rgba(240,97,24,0.3); }
+  .tag-live { background: rgba(192,22,10,0.1); color: #c0160a; border-color: rgba(192,22,10,0.3); }
+  .tag-heart { background: rgba(224,48,96,0.1); color: var(--heart); border-color: rgba(224,48,96,0.3); }
+
+  .feat-name { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .feat-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── COLOR PALETTE ── */
+  .palette { display: flex; gap: 0; border: 1.5px solid var(--text); border-radius: 14px; overflow: hidden; }
+  .swatch { flex: 1; min-width: 0; }
+  .swatch-color { height: 120px; }
+  .swatch-info { padding: 16px 18px; border-top: 1px solid var(--text); }
+  .swatch-name { font-size: 13px; font-weight: 700; color: var(--text); }
+  .swatch-hex {
+    font-size: 11px; color: var(--muted); font-family: 'Courier New', monospace;
+    margin-top: 2px; letter-spacing: 0.04em;
+  }
+  .swatch-use { font-size: 11px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+  .swatch + .swatch { border-left: 1px solid var(--text); }
+
+  /* ── LIEUX ── */
+  .lieux-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .lieu-card {
+    border: 1.5px solid var(--text); border-radius: 12px; overflow: hidden;
+  }
+  .lieu-stripe { height: 8px; }
+  .lieu-body { padding: 18px 20px; }
+  .lieu-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .lieu-full { font-size: 12px; color: var(--muted); font-style: italic; margin-bottom: 12px; }
+  .lieu-badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 10px; border: 1.5px solid;
+  }
+
+  /* ── FILES ── */
+  .files-list { display: flex; flex-direction: column; gap: 10px; }
+  .file-card {
+    display: flex; align-items: center; gap: 18px;
+    border: 1.5px solid var(--text); border-radius: 12px;
+    padding: 18px 22px; background: var(--cream);
+    transition: background 0.12s;
+  }
+  .file-card:hover { background: var(--beige); }
+  .file-num {
+    font-family: 'DM Serif Display', serif; font-size: 36px;
+    color: var(--orange); line-height: 1; min-width: 32px;
+  }
+  .file-info { flex: 1; }
+  .file-name { font-size: 15px; font-weight: 700; color: var(--text); font-family: 'Courier New', monospace; }
+  .file-desc { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .file-badge {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 8px; white-space: nowrap;
+  }
+  .fb-main    { background: var(--orange); color: #fff; }
+  .fb-pwa     { background: rgba(240,97,24,0.1); color: var(--orange); border: 1px solid rgba(240,97,24,0.3); }
+  .fb-config  { background: rgba(26,18,8,0.08); color: var(--muted); border: 1px solid var(--border); }
+
+  /* ── UPDATE BOX ── */
+  .update-box {
+    border: 1.5px solid var(--text); border-radius: 14px;
+    padding: 28px 32px;
+    display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start;
+  }
+  .update-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: var(--orange); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .update-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text); margin-bottom: 8px; }
+  .update-text { font-size: 14px; color: var(--muted); line-height: 1.75; }
+  .update-text code {
+    font-family: 'Courier New', monospace; font-size: 13px;
+    background: rgba(26,18,8,0.07); padding: 1px 6px; border-radius: 4px; color: var(--text);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1.5px solid var(--text); padding: 20px 48px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+  }
+
+  @media (max-width: 700px) {
+    header { padding: 20px 24px 18px; }
+    .page { padding: 32px 24px 60px; }
+    .palette { flex-direction: column; }
+    .swatch + .swatch { border-left: none; border-top: 1px solid var(--text); }
+    .lieux-grid { grid-template-columns: 1fr; }
+    footer { padding: 16px 24px; }
+    .update-box { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>FESTIVAL ASIASIE 2026</span><span>GUIDE INTERNE — ÉQUIPE</span>
+    <span>7 — 10 MAI · MONTRÉAL</span><span>HORAIRE INTERACTIF</span>
+    <span>FESTIVAL ASIASIE 2026</span><span>GUIDE INTERNE — ÉQUIPE</span>
+    <span>7 — 10 MAI · MONTRÉAL</span><span>HORAIRE INTERACTIF</span>
+  </div>
+</div>
+
+<header>
+  <div class="header-logo">ASIA<span>SIE</span></div>
+  <div class="header-meta">
+    <div class="label">Document interne</div>
+    <div class="title">Horaire interactif 2026</div>
+    <div class="subtitle">Guide de présentation pour l'équipe</div>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <div class="intro-eyebrow">À propos de ce document</div>
+    <h1 class="intro-heading">Un horaire <em>vivant</em>, sans app, sans abonnement.</h1>
+    <p class="intro-body">Ce guide présente le fonctionnement de l'horaire interactif du Festival Asiasie 2026 — une page web hébergée directement sur le site, installable comme une app sur téléphone, avec mise à jour en temps réel pendant l'événement.</p>
+  </div>
+
+  <!-- FONCTIONNALITÉS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">01</div>
+      <div class="section-title">Ce que l'horaire fait</div>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feat-card">
+        <div class="feat-top">
+          <div class="feat-icon">⏱</div>
+          <span class="feat-tag tag-live">Avant le festival</span>
+        </div>
+        <div class="feat-name">Compte à rebours en direct</div>
+        <div class="feat-desc">Affiche jours / heures / minutes / secondes avant le 7 mai. Disparaît automatiquement à l'ouverture du festival.</div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-top">
+          <div class="feat-icon">📅</div>
+        </div>
+        <div class="feat-name">Navigation par journée</div>
+        <div class="feat-desc">4 onglets — Jeu 7, Ven 8, Sam 9, Dim 10. Le jour en cours est marqué d'un ●. Un tap pour changer de journée.</div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-top">
+          <div class="feat-icon">🔴</div>
+          <span class="feat-tag tag-live">Temps réel</span>
+        </div>
+        <div class="feat-name">Ligne de temps en direct</div>
+        <div class="feat-desc">Une ligne rouge se déplace sur la liste selon l'heure exacte, se repositionnant à chaque minute automatiquement.</div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-top">
+          <div class="feat-icon">🟠</div>
+          <span class="feat-tag tag-live">Temps réel</span>
+        </div>
+        <div class="feat-name">Bannière « En cours »</div>
+        <div class="feat-desc">Quand un événement est en cours, une bannière orange apparaît en haut avec le nom, l'artiste et le lieu.</div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-top">
+          <div class="feat-icon">🎨</div>
+        </div>
+        <div class="feat-name">Filtres par lieu</div>
+        <div class="feat-desc">Boutons pour filtrer par Scène, Atelier ou Centre Eaton. Chaque lieu a sa propre couleur. Idéal pour les bénévoles assignés à un poste fixe.</div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-top">
+          <div class="feat-icon">▶</div>
+        </div>
+        <div class="feat-name">Fiche détaillée par activité</div>
+        <div class="feat-desc">Un tap ouvre un panneau qui glisse depuis le bas avec description complète, tags (gratuit, places limitées…) et lieu. Se ferme en glissant vers le bas.</div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-top">
+          <div class="feat-icon">♡</div>
+          <span class="feat-tag tag-heart">Favoris</span>
+        </div>
+        <div class="feat-name">Coups de cœur personnels</div>
+        <div class="feat-desc">Chaque activité a un cœur. Un tap l'ajoute aux favoris. Un bouton regroupe tous les favoris par jour. Sauvegardé dans le téléphone.</div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-top">
+          <div class="feat-icon">📲</div>
+          <span class="feat-tag tag-pwa">PWA</span>
+        </div>
+        <div class="feat-name">Installable comme une app</div>
+        <div class="feat-desc">Android : bouton automatique. iPhone : guide en 3 étapes via Safari. Zéro App Store, zéro abonnement, zéro coût.</div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-top">
+          <div class="feat-icon">📶</div>
+          <span class="feat-tag tag-pwa">PWA</span>
+        </div>
+        <div class="feat-name">Fonctionne hors ligne</div>
+        <div class="feat-desc">Une fois installée, la page est mise en cache. Si le Wi-Fi du festival est lent ou absent, tout s'affiche quand même.</div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-top">
+          <div class="feat-icon">💚</div>
+          <span class="feat-tag tag-free">Gratuit</span>
+        </div>
+        <div class="feat-name">Zéro coût, zéro abonnement</div>
+        <div class="feat-desc">3 fichiers hébergés sur Webflow, Netlify ou GitHub Pages. Aucun service tiers, aucune base de données, aucune dépense récurrente.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COULEURS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">02</div>
+      <div class="section-title">Les couleurs — fidèles à asiasie.com</div>
+    </div>
+
+    <div class="palette">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#ede8da;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Beige chaud</div>
+          <div class="swatch-hex">#ede8da</div>
+          <div class="swatch-use">Fond de page — identique au site officiel</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f06118;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Orange festival</div>
+          <div class="swatch-hex">#f06118</div>
+          <div class="swatch-use">Ticker, onglet actif, bannière live, boutons principaux</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#8c6e2a;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Brun doré</div>
+          <div class="swatch-hex">#8c6e2a</div>
+          <div class="swatch-use">Couleur Atelier — comme les titres dorés du site</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#9fb3d4;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Bleu poudré</div>
+          <div class="swatch-hex">#9fb3d4</div>
+          <div class="swatch-use">Couleur Centre Eaton</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1a1208;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Noir chaud</div>
+          <div class="swatch-hex">#1a1208</div>
+          <div class="swatch-use">Texte et bordures — légèrement brun, pas de noir pur</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIEUX -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">03</div>
+      <div class="section-title">Code couleur des lieux</div>
+    </div>
+
+    <div class="lieux-grid">
+      <div class="lieu-card">
+        <div class="lieu-stripe" style="background:#f06118;"></div>
+        <div class="lieu-body">
+          <div class="lieu-name">Scène principale</div>
+          <div class="lieu-full">Time Out Market — Scène</div>
+          <span class="lieu-badge" style="background:rgba(240,97,24,0.1);color:#f06118;border-color:rgba(240,97,24,0.4);">Orange</span>
+        </div>
+      </div>
+      <div class="lieu-card">
+        <div class="lieu-stripe" style="background:#8c6e2a;"></div>
+        <div class="lieu-body">
+          <div class="lieu-name">Atelier</div>
+          <div class="lieu-full">Time Out Market — Salle atelier</div>
+          <span class="lieu-badge" style="background:rgba(140,110,42,0.1);color:#8c6e2a;border-color:rgba(140,110,42,0.4);">Brun doré</span>
+        </div>
+      </div>
+      <div class="lieu-card">
+        <div class="lieu-stripe" style="background:#9fb3d4;"></div>
+        <div class="lieu-body">
+          <div class="lieu-name">Centre Eaton</div>
+          <div class="lieu-full">Performances hors Time Out Market</div>
+          <span class="lieu-badge" style="background:rgba(159,179,212,0.2);color:#4a6090;border-color:rgba(159,179,212,0.6);">Bleu poudré</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FICHIERS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">04</div>
+      <div class="section-title">Les 3 fichiers à mettre en ligne</div>
+    </div>
+
+    <div class="files-list">
+      <div class="file-card">
+        <div class="file-num">1</div>
+        <div class="file-info">
+          <div class="file-name">asiasie_horaire_2026.html</div>
+          <div class="file-desc">Tout l'horaire, les données, le design et les fonctionnalités en un seul fichier autonome</div>
+        </div>
+        <span class="file-badge fb-main">Principal</span>
+      </div>
+      <div class="file-card">
+        <div class="file-num">2</div>
+        <div class="file-info">
+          <div class="file-name">manifest.json</div>
+          <div class="file-desc">Définit le nom, les couleurs et l'icône de l'app quand elle est installée sur le téléphone</div>
+        </div>
+        <span class="file-badge fb-pwa">PWA</span>
+      </div>
+      <div class="file-card">
+        <div class="file-num">3</div>
+        <div class="file-info">
+          <div class="file-name">sw.js</div>
+          <div class="file-desc">Service worker — permet le fonctionnement hors ligne une fois l'app installée</div>
+        </div>
+        <span class="file-badge fb-config">PWA</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISES À JOUR -->
+  <div class="section" style="margin-bottom:0;">
+    <div class="section-header">
+      <div class="section-number">05</div>
+      <div class="section-title">Mises à jour du programme</div>
+    </div>
+
+    <div class="update-box">
+      <div class="update-icon">✏️</div>
+      <div>
+        <div class="update-title">Si le programme change</div>
+        <div class="update-text">
+          Kim modifie les données dans la section <code>EVENTS</code> du fichier HTML et re-téléverse le fichier sur Webflow. La mise à jour est visible immédiatement pour tout le monde, sans rechargement.<br><br>
+          <strong>Règle importante :</strong> ne jamais partager une capture d'écran ou un PDF de l'horaire — ils peuvent être périmés. Toujours partager le lien <code>asiasie.com/horaire</code>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Festival Asiasie 2026</span>
+  <span>Guide interne — confidentiel équipe</span>
+  <span>asiasie.com</span>
+</footer>
+
+</body>
+</html>
