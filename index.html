@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <title>Guide — Horaire Interactif Asiasie 2026</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -16,93 +17,163 @@
     --muted:  #6b5a34;
     --border: rgba(26,18,8,0.11);
     --heart:  #e03060;
+    --d0-bg: #d6e8d0; --d0-text: #2d5e25; --d0-bd: #a8cc9e;
+    --d1-bg: #f5d9c0; --d1-text: #7a3d10; --d1-bd: #e8a87a;
+    --d2-bg: #f5cdd4; --d2-text: #7a2535; --d2-bd: #e8939f;
+    --d3-bg: #c8d8ed; --d3-text: #1e3d6b; --d3-bd: #8aacd4;
   }
-  body { background: var(--cream); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; font-size: 16px; line-height: 1.6; -webkit-text-size-adjust: 100%; }
 
+  body {
+    background: var(--cream); color: var(--text);
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px; line-height: 1.6; -webkit-text-size-adjust: 100%;
+  }
+
+  /* TICKER */
   .ticker { background: var(--orange); color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 10px 0; white-space: nowrap; overflow: hidden; }
   .ticker-inner { display: inline-block; animation: scroll 28s linear infinite; }
   .ticker-inner span { margin: 0 24px; }
   @keyframes scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
+  /* HEADER */
   header { padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1.5px solid var(--text); gap: 10px; position: sticky; top: 0; background: var(--cream); z-index: 50; }
   .logo-svg { height: 36px; width: auto; display: block; flex-shrink: 0; }
   .logo-svg path, .logo-svg rect, .logo-svg polygon { fill: var(--text); }
   .header-tag { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border: 1.5px solid var(--text); padding: 5px 12px; border-radius: 20px; }
 
+  /* PAGE TITLE */
   .page-title { padding: 28px 20px 0; }
-  .page-title h1 { font-size: clamp(26px, 7vw, 42px); font-weight: 900; letter-spacing: 0.01em; text-transform: uppercase; color: var(--text); line-height: 1.1; }
+  .page-title h1 { font-size: clamp(26px, 7vw, 48px); font-weight: 900; letter-spacing: -0.01em; text-transform: uppercase; color: var(--text); line-height: 1.05; }
   .page-title h1 span { color: var(--orange); }
-  .page-title .sub { font-size: clamp(13px, 3.5vw, 18px); color: var(--muted); font-weight: 600; margin-top: 8px; }
+  .page-title .sub { font-size: clamp(13px, 3.5vw, 17px); color: var(--muted); font-weight: 600; margin-top: 10px; }
 
-  main { padding: 28px 20px 80px; }
+  /* MAIN */
+  main { padding: 32px 20px 80px; }
 
-  .section { margin-bottom: 40px; }
-  .section-label { font-size: 11px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1.5px solid var(--text); display: flex; align-items: center; gap: 10px; }
+  /* SECTION */
+  .section { margin-bottom: 44px; }
+  .section-label {
+    font-size: 11px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 16px; padding-bottom: 10px;
+    border-bottom: 1.5px solid var(--text);
+    display: flex; align-items: center; gap: 10px;
+  }
   .section-num { background: var(--orange); color: #fff; font-size: 10px; font-weight: 900; letter-spacing: 0.1em; padding: 3px 9px; border-radius: 10px; }
 
-  .feat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
-  .feat-card { display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; border: 1.5px solid var(--text); border-radius: 10px; background: var(--cream); position: relative; overflow: hidden; transition: background 0.1s; }
+  /* FEATURE CARDS */
+  .feat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 10px; }
+
+  .feat-card {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 16px 18px; border: 1.5px solid var(--text); border-radius: 10px;
+    background: var(--cream); position: relative; overflow: hidden;
+    transition: background 0.1s;
+  }
   .feat-card:hover { background: #ede8da; }
-  .feat-stripe { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--orange); }
-  .feat-stripe.brown { background: var(--brown); }
-  .feat-stripe.blue  { background: var(--blue); }
-  .feat-stripe.heart { background: var(--heart); }
-  .feat-stripe.dark  { background: var(--text); }
+  .feat-stripe { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
+  .c-orange { background: var(--orange); }
+  .c-brown  { background: var(--brown); }
+  .c-blue   { background: var(--blue); }
+  .c-heart  { background: var(--heart); }
+  .c-dark   { background: var(--text); }
+  .c-green  { background: var(--d0-bg); }
   .feat-body { flex: 1; min-width: 0; }
   .feat-name { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.3; color: var(--text); margin-bottom: 5px; }
-  .feat-desc { font-size: 12px; color: var(--muted); line-height: 1.55; font-weight: 500; }
+  .feat-desc { font-size: 12px; color: var(--muted); line-height: 1.6; font-weight: 500; }
   .feat-badge { font-size: 9px; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 8px; border: 1.5px solid; white-space: nowrap; flex-shrink: 0; align-self: flex-start; }
-  .badge-orange { background: rgba(240,97,24,0.1); color: var(--orange); border-color: var(--orange); }
-  .badge-green  { background: rgba(29,100,50,0.1); color: #1d6432; border-color: rgba(29,100,50,0.4); }
-  .badge-heart  { background: rgba(224,48,96,0.1); color: var(--heart); border-color: rgba(224,48,96,0.4); }
-  .badge-dark   { background: rgba(26,18,8,0.07); color: var(--muted); border-color: var(--border); }
+  .b-orange { background: rgba(240,97,24,0.1); color: var(--orange); border-color: var(--orange); }
+  .b-green  { background: var(--d0-bg); color: var(--d0-text); border-color: var(--d0-bd); }
+  .b-pink   { background: var(--d2-bg); color: var(--d2-text); border-color: var(--d2-bd); }
+  .b-dark   { background: rgba(26,18,8,0.06); color: var(--muted); border-color: var(--border); }
 
+  /* DAY COLORS DEMO */
+  .days-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .day-demo { border: 1.5px solid var(--text); border-radius: 10px; overflow: hidden; }
+  .day-demo-top { padding: 14px 16px 12px; }
+  .day-demo-top .day-num { font-size: 22px; font-weight: 900; line-height: 1; margin-bottom: 2px; }
+  .day-demo-top .day-name { font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; }
+  .day-demo-tags { padding: 0 16px 14px; display: flex; flex-direction: column; gap: 5px; }
+  .day-demo-tag { font-size: 9px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 8px; border: 1.5px solid; display: inline-block; align-self: flex-start; }
+  .day-demo-uses { padding: 10px 16px; border-top: 1px solid rgba(0,0,0,0.1); font-size: 10px; font-weight: 600; opacity: 0.7; line-height: 1.5; }
+
+  .d0-demo .day-demo-top { background: var(--d0-bg); color: var(--d0-text); }
+  .d0-demo .day-demo-tag { background: var(--d0-bg); color: var(--d0-text); border-color: var(--d0-bd); }
+  .d0-demo .day-demo-uses { background: color-mix(in srgb, var(--d0-bg) 30%, #fff); color: var(--d0-text); }
+
+  .d1-demo .day-demo-top { background: var(--d1-bg); color: var(--d1-text); }
+  .d1-demo .day-demo-tag { background: var(--d1-bg); color: var(--d1-text); border-color: var(--d1-bd); }
+  .d1-demo .day-demo-uses { background: color-mix(in srgb, var(--d1-bg) 30%, #fff); color: var(--d1-text); }
+
+  .d2-demo .day-demo-top { background: var(--d2-bg); color: var(--d2-text); }
+  .d2-demo .day-demo-tag { background: var(--d2-bg); color: var(--d2-text); border-color: var(--d2-bd); }
+  .d2-demo .day-demo-uses { background: color-mix(in srgb, var(--d2-bg) 30%, #fff); color: var(--d2-text); }
+
+  .d3-demo .day-demo-top { background: var(--d3-bg); color: var(--d3-text); }
+  .d3-demo .day-demo-tag { background: var(--d3-bg); color: var(--d3-text); border-color: var(--d3-bd); }
+  .d3-demo .day-demo-uses { background: color-mix(in srgb, var(--d3-bg) 30%, #fff); color: var(--d3-text); }
+
+  /* COLOR PALETTE */
   .palette { display: flex; border: 1.5px solid var(--text); border-radius: 10px; overflow: hidden; }
   .swatch { flex: 1; min-width: 0; }
   .swatch + .swatch { border-left: 1px solid var(--text); }
-  .swatch-color { height: 100px; }
-  .swatch-info { padding: 12px 14px; border-top: 1px solid var(--text); }
-  .swatch-name { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text); }
-  .swatch-hex { font-family: 'Courier New', monospace; font-size: 10px; color: var(--muted); margin-top: 3px; }
-  .swatch-use { font-size: 10px; color: var(--muted); margin-top: 6px; line-height: 1.5; font-weight: 500; }
+  .swatch-color { height: 80px; }
+  .swatch-info { padding: 10px 12px; border-top: 1px solid var(--text); }
+  .swatch-name { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text); }
+  .swatch-hex { font-family: 'Courier New', monospace; font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .swatch-use { font-size: 10px; color: var(--muted); margin-top: 5px; line-height: 1.5; font-weight: 500; }
 
+  /* LIEUX */
   .lieux { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .lieu-card { border: 1.5px solid var(--text); border-radius: 10px; overflow: hidden; }
-  .lieu-stripe { height: 6px; }
+  .lieu-stripe { height: 5px; }
   .lieu-body { padding: 14px 16px; }
-  .lieu-name { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text); margin-bottom: 4px; }
+  .lieu-name { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text); margin-bottom: 3px; }
   .lieu-full { font-size: 11px; color: var(--muted); font-weight: 500; margin-bottom: 10px; line-height: 1.4; }
-  .lieu-dot-row { display: flex; align-items: center; gap: 7px; }
+  .lieu-dot-row { display: flex; align-items: center; gap: 6px; }
   .lieu-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
   .lieu-dot-label { font-size: 10px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
 
+  /* FILES */
   .files { display: flex; flex-direction: column; gap: 8px; }
-  .file-card { display: flex; align-items: center; gap: 16px; padding: 16px 18px; border: 1.5px solid var(--text); border-radius: 10px; background: var(--cream); transition: background 0.1s; }
+  .file-card {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 18px; border: 1.5px solid var(--text); border-radius: 10px;
+    background: var(--cream); transition: background 0.1s;
+  }
   .file-card:hover { background: #ede8da; }
-  .file-num { font-size: 22px; font-weight: 900; color: var(--orange); min-width: 24px; line-height: 1; }
+  .file-num { font-size: 24px; font-weight: 900; color: var(--orange); min-width: 24px; line-height: 1; }
   .file-info { flex: 1; }
   .file-name { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text); font-family: 'Courier New', monospace; }
   .file-desc { font-size: 12px; color: var(--muted); margin-top: 3px; font-weight: 500; }
 
+  /* UPDATE BOX */
   .update-box { border: 1.5px solid var(--text); border-radius: 10px; overflow: hidden; }
   .update-top { background: var(--orange); color: #fff; padding: 14px 18px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
-  .update-body { padding: 18px; }
-  .update-body p { font-size: 13px; color: var(--muted); line-height: 1.7; font-weight: 500; }
-  .update-body code { font-family: 'Courier New', monospace; font-size: 12px; background: rgba(26,18,8,0.06); padding: 1px 6px; border-radius: 4px; color: var(--text); }
-  .update-rule { margin-top: 14px; padding: 14px 16px; background: rgba(240,97,24,0.07); border: 1px solid rgba(240,97,24,0.3); border-radius: 8px; font-size: 12px; font-weight: 700; color: var(--text); line-height: 1.6; }
-  .update-rule strong { color: var(--orange); }
+  .update-body { padding: 20px 20px 8px; }
+  .update-step { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 0.5px solid var(--border); }
+  .update-step:last-of-type { border-bottom: none; }
+  .step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--text); color: var(--cream); font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .step-body { flex: 1; }
+  .step-title { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text); margin-bottom: 4px; }
+  .step-desc { font-size: 12px; color: var(--muted); font-weight: 500; line-height: 1.6; }
+  .step-desc code { font-family: 'Courier New', monospace; font-size: 11px; background: rgba(26,18,8,0.06); padding: 1px 6px; border-radius: 4px; color: var(--text); }
+  .update-rule { margin: 0 20px 20px; padding: 14px 16px; background: rgba(240,97,24,0.07); border: 1px solid rgba(240,97,24,0.3); border-radius: 8px; font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.65; }
+  .update-rule strong { color: var(--orange); font-weight: 800; }
+  .update-rule code { font-family: 'Courier New', monospace; font-size: 11px; background: rgba(240,97,24,0.12); padding: 1px 5px; border-radius: 4px; }
 
+  /* FOOTER */
   footer { border-top: 1.5px solid var(--text); padding: 14px 20px; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
 
   @media (min-width: 640px) {
     header, main, .page-title, footer { padding-left: 36px; padding-right: 36px; }
     .logo-svg { height: 40px; }
   }
-  @media (max-width: 560px) {
+  @media (max-width: 600px) {
     .palette { flex-direction: column; }
     .swatch + .swatch { border-left: none; border-top: 1px solid var(--text); }
     .lieux { grid-template-columns: 1fr; }
     .feat-grid { grid-template-columns: 1fr; }
+    .days-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -138,47 +209,48 @@
 
 <main>
 
+  <!-- 01 FONCTIONNALITÉS -->
   <div class="section">
     <div class="section-label"><span class="section-num">01</span>Ce que l'horaire fait</div>
     <div class="feat-grid">
 
       <div class="feat-card">
-        <div class="feat-stripe"></div>
+        <div class="feat-stripe c-orange"></div>
         <div class="feat-body">
           <div class="feat-name">Compte à rebours en direct</div>
-          <div class="feat-desc">Avant le 7 mai, affiche jours / heures / minutes / secondes. Disparaît automatiquement à l'ouverture du festival.</div>
+          <div class="feat-desc">Avant le 7 mai, affiche jours / heures / minutes / secondes en temps réel. Disparaît automatiquement à l'ouverture du festival.</div>
         </div>
-        <span class="feat-badge badge-orange">Avant</span>
+        <span class="feat-badge b-orange">Avant</span>
       </div>
 
       <div class="feat-card">
-        <div class="feat-stripe"></div>
+        <div class="feat-stripe c-orange"></div>
         <div class="feat-body">
           <div class="feat-name">Navigation par journée</div>
-          <div class="feat-desc">4 onglets — Jeu 7, Ven 8, Sam 9, Dim 10. Le jour en cours est marqué d'un ●. Un tap pour changer de journée.</div>
+          <div class="feat-desc">4 onglets — Jeu 7, Ven 8, Sam 9, Dim 10. Chaque journée a sa propre couleur. Le jour en cours est marqué d'un ●.</div>
         </div>
       </div>
 
       <div class="feat-card">
-        <div class="feat-stripe"></div>
+        <div class="feat-stripe c-orange"></div>
         <div class="feat-body">
           <div class="feat-name">Ligne de temps en direct</div>
-          <div class="feat-desc">Une ligne rouge se déplace sur la liste selon l'heure exacte, se repositionnant chaque minute automatiquement.</div>
+          <div class="feat-desc">Pendant le festival, une ligne rouge se déplace sur la liste selon l'heure exacte. Se repositionne automatiquement chaque minute.</div>
         </div>
-        <span class="feat-badge badge-orange">Live</span>
+        <span class="feat-badge b-orange">Live</span>
       </div>
 
       <div class="feat-card">
-        <div class="feat-stripe"></div>
+        <div class="feat-stripe c-orange"></div>
         <div class="feat-body">
           <div class="feat-name">Bannière « En cours »</div>
-          <div class="feat-desc">Quand un événement se déroule, une bannière orange apparaît en haut avec le nom, l'artiste et le lieu.</div>
+          <div class="feat-desc">Quand un événement est actif, une bannière colorée (selon la journée) apparaît en haut avec le nom, l'artiste et le lieu.</div>
         </div>
-        <span class="feat-badge badge-orange">Live</span>
+        <span class="feat-badge b-orange">Live</span>
       </div>
 
       <div class="feat-card">
-        <div class="feat-stripe brown"></div>
+        <div class="feat-stripe c-brown"></div>
         <div class="feat-body">
           <div class="feat-name">Filtres par lieu</div>
           <div class="feat-desc">Boutons pour filtrer par Scène, Atelier ou Centre Eaton. Idéal pour les bénévoles assignés à un poste fixe.</div>
@@ -186,54 +258,107 @@
       </div>
 
       <div class="feat-card">
-        <div class="feat-stripe dark"></div>
+        <div class="feat-stripe c-dark"></div>
         <div class="feat-body">
           <div class="feat-name">Fiche détaillée par activité</div>
-          <div class="feat-desc">Un tap ouvre un panneau depuis le bas avec description complète, tags (gratuit, places limitées…) et lieu. Glisser vers le bas pour fermer.</div>
+          <div class="feat-desc">Un tap ouvre un panneau depuis le bas avec description complète, tags colorés et lieu exact. Glisser vers le bas pour fermer.</div>
         </div>
       </div>
 
       <div class="feat-card">
-        <div class="feat-stripe heart"></div>
+        <div class="feat-stripe c-heart"></div>
         <div class="feat-body">
           <div class="feat-name">Coups de cœur personnels</div>
           <div class="feat-desc">Chaque activité a un ♡. Un tap l'ajoute aux favoris, regroupés par jour dans une vue dédiée. Sauvegardé dans le téléphone.</div>
         </div>
-        <span class="feat-badge badge-heart">♡ Favs</span>
+        <span class="feat-badge b-pink">♡ Favs</span>
       </div>
 
       <div class="feat-card">
-        <div class="feat-stripe blue"></div>
+        <div class="feat-stripe c-blue"></div>
         <div class="feat-body">
           <div class="feat-name">Installable comme une app</div>
-          <div class="feat-desc">Android : bouton automatique. iPhone : guide en 3 étapes via Safari. Zéro App Store, zéro abonnement, zéro coût.</div>
+          <div class="feat-desc">Android : bouton automatique. iPhone : guide 3 étapes via Safari. Zéro App Store, zéro abonnement, zéro coût.</div>
         </div>
-        <span class="feat-badge badge-orange">PWA</span>
+        <span class="feat-badge b-orange">PWA</span>
       </div>
 
       <div class="feat-card">
-        <div class="feat-stripe blue"></div>
+        <div class="feat-stripe c-blue"></div>
         <div class="feat-body">
           <div class="feat-name">Fonctionne hors ligne</div>
           <div class="feat-desc">Une fois installée, la page est mise en cache. Si le Wi-Fi du festival est lent ou absent, tout s'affiche quand même.</div>
         </div>
-        <span class="feat-badge badge-orange">PWA</span>
+        <span class="feat-badge b-orange">PWA</span>
       </div>
 
       <div class="feat-card">
-        <div class="feat-stripe dark"></div>
+        <div class="feat-stripe c-green"></div>
         <div class="feat-body">
           <div class="feat-name">Zéro coût, zéro abonnement</div>
           <div class="feat-desc">3 fichiers hébergés sur Webflow. Aucun service tiers, aucune base de données, aucune dépense récurrente.</div>
         </div>
-        <span class="feat-badge badge-green">Gratuit</span>
+        <span class="feat-badge b-green">Gratuit</span>
       </div>
 
     </div>
   </div>
 
+  <!-- 02 COULEURS PAR JOURNÉE -->
   <div class="section">
-    <div class="section-label"><span class="section-num">02</span>Les couleurs — fidèles à asiasie.com</div>
+    <div class="section-label"><span class="section-num">02</span>Une couleur par journée</div>
+    <div class="days-grid">
+
+      <div class="day-demo d0-demo">
+        <div class="day-demo-top">
+          <div class="day-num">7 mai</div>
+          <div class="day-name">Jeudi</div>
+        </div>
+        <div class="day-demo-tags">
+          <span class="day-demo-tag">Vert sauge</span>
+        </div>
+        <div class="day-demo-uses">Onglet · fond timeline · bannière · tags du drawer</div>
+      </div>
+
+      <div class="day-demo d1-demo">
+        <div class="day-demo-top">
+          <div class="day-num">8 mai</div>
+          <div class="day-name">Vendredi</div>
+        </div>
+        <div class="day-demo-tags">
+          <span class="day-demo-tag">Saumon</span>
+        </div>
+        <div class="day-demo-uses">Onglet · fond timeline · bannière · tags du drawer</div>
+      </div>
+
+      <div class="day-demo d2-demo">
+        <div class="day-demo-top">
+          <div class="day-num">9 mai</div>
+          <div class="day-name">Samedi</div>
+        </div>
+        <div class="day-demo-tags">
+          <span class="day-demo-tag">Rose</span>
+        </div>
+        <div class="day-demo-uses">Onglet · fond timeline · bannière · tags du drawer</div>
+      </div>
+
+      <div class="day-demo d3-demo">
+        <div class="day-demo-top">
+          <div class="day-num">10 mai</div>
+          <div class="day-name">Dimanche</div>
+        </div>
+        <div class="day-demo-tags">
+          <span class="day-demo-tag">Bleu</span>
+        </div>
+        <div class="day-demo-uses">Onglet · fond timeline · bannière · tags du drawer</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 03 COULEURS -->
+  <div class="section">
+    <div class="section-label"><span class="section-num">03</span>Les couleurs — fidèles à asiasie.com</div>
     <div class="palette">
       <div class="swatch">
         <div class="swatch-color" style="background:#ffffff; outline: 1px solid #e0ddd8;"></div>
@@ -246,9 +371,9 @@
       <div class="swatch">
         <div class="swatch-color" style="background:#f06118;"></div>
         <div class="swatch-info">
-          <div class="swatch-name">Orange festival</div>
+          <div class="swatch-name">Orange</div>
           <div class="swatch-hex">#f06118</div>
-          <div class="swatch-use">Ticker, onglet actif, bannière live, accents</div>
+          <div class="swatch-use">Ticker, accents, boutons</div>
         </div>
       </div>
       <div class="swatch">
@@ -256,7 +381,7 @@
         <div class="swatch-info">
           <div class="swatch-name">Brun doré</div>
           <div class="swatch-hex">#8c6e2a</div>
-          <div class="swatch-use">Atelier — comme les titres du site</div>
+          <div class="swatch-use">Atelier</div>
         </div>
       </div>
       <div class="swatch">
@@ -272,7 +397,7 @@
         <div class="swatch-info">
           <div class="swatch-name">Beige chaud</div>
           <div class="swatch-hex">#ede8da</div>
-          <div class="swatch-use">Hover des activités</div>
+          <div class="swatch-use">Hover activités</div>
         </div>
       </div>
       <div class="swatch">
@@ -280,14 +405,15 @@
         <div class="swatch-info">
           <div class="swatch-name">Noir chaud</div>
           <div class="swatch-hex">#1a1208</div>
-          <div class="swatch-use">Texte et bordures</div>
+          <div class="swatch-use">Texte, bordures</div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- 04 LIEUX -->
   <div class="section">
-    <div class="section-label"><span class="section-num">03</span>Code couleur des lieux</div>
+    <div class="section-label"><span class="section-num">04</span>Code couleur des lieux</div>
     <div class="lieux">
       <div class="lieu-card">
         <div class="lieu-stripe" style="background:#f06118;"></div>
@@ -316,8 +442,9 @@
     </div>
   </div>
 
+  <!-- 05 FICHIERS -->
   <div class="section">
-    <div class="section-label"><span class="section-num">04</span>Les 3 fichiers à mettre en ligne ensemble</div>
+    <div class="section-label"><span class="section-num">05</span>Les 3 fichiers à mettre en ligne ensemble</div>
     <div class="files">
       <div class="file-card">
         <div class="file-num">1</div>
@@ -325,7 +452,7 @@
           <div class="file-name">asiasie_horaire_2026.html</div>
           <div class="file-desc">Tout l'horaire, les données, le design et les fonctionnalités en un seul fichier autonome</div>
         </div>
-        <span class="feat-badge badge-orange">Principal</span>
+        <span class="feat-badge b-orange">Principal</span>
       </div>
       <div class="file-card">
         <div class="file-num">2</div>
@@ -333,7 +460,7 @@
           <div class="file-name">manifest.json</div>
           <div class="file-desc">Nom, couleurs et icône de l'app quand elle est installée sur le téléphone</div>
         </div>
-        <span class="feat-badge badge-dark">PWA</span>
+        <span class="feat-badge b-dark">PWA</span>
       </div>
       <div class="file-card">
         <div class="file-num">3</div>
@@ -341,18 +468,53 @@
           <div class="file-name">sw.js</div>
           <div class="file-desc">Service worker — fonctionnement hors ligne une fois l'app installée</div>
         </div>
-        <span class="feat-badge badge-dark">PWA</span>
+        <span class="feat-badge b-dark">PWA</span>
       </div>
     </div>
   </div>
 
+  <!-- 06 MISES À JOUR -->
   <div class="section" style="margin-bottom:0;">
-    <div class="section-label"><span class="section-num">05</span>Mises à jour du programme</div>
+    <div class="section-label"><span class="section-num">06</span>Mises à jour du programme</div>
     <div class="update-box">
-      <div class="update-top">Si le programme change</div>
+      <div class="update-top">Comment mettre à jour l'horaire</div>
       <div class="update-body">
-        <p>Kim modifie les données dans la section <code>EVENTS</code> du fichier HTML et re-téléverse le fichier sur Webflow. La mise à jour est visible immédiatement pour tout le monde, sans rechargement.</p>
-        <div class="update-rule"><strong>Règle importante :</strong> ne jamais partager une capture d'écran ou un PDF de l'horaire — ils peuvent être périmés. Toujours partager le lien <code>asiasie.com/horaire</code>.</div>
+
+        <div class="update-step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Ouvrir le fichier HTML</div>
+            <div class="step-desc">Ouvre <code>asiasie_horaire_2026.html</code> dans un éditeur de texte (VS Code, TextEdit, Notepad++). Cherche la section <code>const EVENTS = {</code> — c'est là que sont toutes les données.</div>
+          </div>
+        </div>
+
+        <div class="update-step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Trouver le bon jour et l'activité</div>
+            <div class="step-desc">Chaque journée est identifiée par sa date : <code>"2026-05-07"</code> pour jeudi, <code>"2026-05-08"</code> pour vendredi, etc. Chaque activité a les champs : <code>start</code>, <code>end</code>, <code>name</code>, <code>note</code>, <code>desc</code>, <code>lieu</code>, <code>tags</code>.</div>
+          </div>
+        </div>
+
+        <div class="update-step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Modifier l'information</div>
+            <div class="step-desc">Change l'heure, le nom ou la description directement dans le texte. Pour changer le lieu, utilise <code>scene</code>, <code>atelier</code> ou <code>eaton</code>. Sauvegarde le fichier.</div>
+          </div>
+        </div>
+
+        <div class="update-step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Re-téléverser sur Webflow</div>
+            <div class="step-desc">Dans Webflow, remplace l'ancien fichier par le nouveau dans l'onglet Assets ou directement dans le bloc Embed. Publie le site. La mise à jour est visible immédiatement pour tout le monde.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="update-rule">
+        <strong>Règle importante :</strong> ne jamais partager une capture d'écran ou un PDF de l'horaire — ils peuvent être périmés. Toujours partager le lien <code>asiasie.com/horaire</code>.
       </div>
     </div>
   </div>
